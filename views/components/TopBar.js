@@ -1,8 +1,8 @@
 let Topbar = {
     render: async () => {
         let view =  /*html*/`
-            <div class="top-bar-contents">
-                <h2>SPA Router1.20</div>
+            <div class="topbar-container">
+                <h2 class="title" id="title">FlORIN</div>
             </div>
         `
         return view

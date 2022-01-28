@@ -1,9 +1,9 @@
-let About = {
+let Profile = {
     render : async () => {
         let view =  /*html*/`
-            <section class="section">
+            <section class="profile">
                 <br>
-                <h1> About </h1>
+                <h1> Profile </h1>
             </section>
         `
         return view
@@ -12,4 +12,4 @@ let About = {
         
 }
 
-export default About;
+export default Profile;

@@ -1,9 +1,10 @@
 "use strict"
 
 import Home         from './views/pages/Home.js'
-import About        from './views/pages/About.js'
-import Error404     from './views/pages/Error404.js'
-import Settings from './views/pages/Settings.js'
+import Collections from './views/pages/Collections.js'
+import ArtWork from './views/pages/ArtWork.js'
+import Profile from './views/pages/Profile.js'
+import CreatePost from './views/pages/CreatePost.js'
 
 import Utils        from './services/Utils.js'
 import Topbar from './views/components/TopBar.js'
@@ -11,9 +12,11 @@ import NavBar from './views/components/NavBar.js'
 
 // List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
-    '/'             : Home
-    , '/about'      : About
-    , '/settings'   : Settings
+    '/'                     : Home
+    , '/collections'        : Collections
+    , '/artwork'            : ArtWork
+    , '/profile'            : Profile
+    , '/createpost'         : CreatePost
 }
 
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
@@ -49,13 +52,26 @@ const router = async () => {
 }
 
 const navigateStyle = async (url) => {
+    const icoDisable = 'rgba(137, 43, 226, 0.52)',
+        icoActive = 'bluebiolet'
     const  homeIco = document.getElementById('home-ico'),
-        aboutIco = document.getElementById('about-ico'),
-        settingIco = document.getElementById('set-ico')
+        collectIco = document.getElementById('collect-ico'),
+        artIco = document.getElementById('art-ico'),
+        profIco = document.getElementById('prof-ico'),
+        plusIco = document.getElementById('plus-ico')
+        title = document.getElementById('title')
 
-    homeIco.style.color = url === '/' ? 'blueviolet' : 'rgba(137, 43, 226, 0.287)'
-    aboutIco.style.color = url === '/about' ? 'blueviolet' : 'rgba(137, 43, 226, 0.287)'
-    settingIco.style.color = url === '/settings' ? 'blueviolet' : 'rgba(137, 43, 226, 0.287)'
+    homeIco.style.color = url === '/' ? icoActive : icoDisable
+    collectIco.style.color = url === '/collections' ? icoActive : icoDisable
+    artIco.style.color = url === '/artwork' ? icoActive : icoDisable
+    profIco.style.color = url == '/profile' ? icoActive : icoDisable
+
+    title.innerText = url === '/' ? 'FlORIN' 
+        : url === '/collections' ? 'My Collections' 
+        : url === '/artwork' ? 'My Artworks' 
+        : url === '/createpost' ? 'Create New Post'
+        : url === '/profile' ? 'Profile'
+        : 'FlORIN'
 }
 
 // Listen on hash change:
