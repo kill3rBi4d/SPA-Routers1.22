@@ -1,4 +1,4 @@
-let CreatePost = {
+let NewPost = {
     render : async () => {
         let view =  /*html*/`
             <section class="CreatePost">
@@ -12,4 +12,4 @@ let CreatePost = {
         
 }
 
-export default CreatePost;
+export default NewPost;

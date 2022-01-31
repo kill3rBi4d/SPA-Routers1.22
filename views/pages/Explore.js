@@ -1,9 +1,9 @@
-let ArtWork = {
+let Explore = {
 
     render: async () => {
         return /*html*/ `
             <section class="artwork">
-                <h2>Art Work</h2>
+                <h2>Explore</h2>
             </section>
         `
     }
@@ -12,4 +12,4 @@ let ArtWork = {
     , after_render: async () => {}
 }
 
-export default ArtWork;
+export default Explore;

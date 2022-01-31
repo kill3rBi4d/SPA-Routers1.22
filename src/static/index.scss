@@ -1,10 +1,20 @@
-$grayTube: rgb(241, 241, 241);
+$grayTube: #FDFDFD;
+$primaryColor: #8A2BE2;
+$secondaryColor: #FF9900;
+$morningHue1: #D0CDE1;
+$morningHue2: #B7B2D7;
+$gradientSec: #AE71E7;
+$facebookBlue: #4164BF;
+$googleRed: #4164BF;
+$shadeBlack: #393939;
+$shadeGray: #626262;
+$border: #F1F1F1;
 
 body{
     margin: 0%;
     padding: 0%;
     overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Google Sans", sans-serif;
     position: relative;
     -webkit-tap-highlight-color: transparent !important;
     -webkit-user-select: none;
@@ -20,7 +30,7 @@ body{
         flex-direction: column;
         align-items: center;
         overflow: hidden;
-        background-color: aliceblue;
+        background-color: $grayTube;
 
         .top-bar{
             width: 100%;
@@ -39,12 +49,34 @@ body{
                 justify-content: center;
                 background-color: transparent;
                 align-items: center;
+                .topbar-content-wrapper{
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
 
-                .title{
-                    font-size: 20px;
-                    color: blueviolet;
-                    font-weight: 600;
-                }
+                    .logo{
+                        width: 90px;
+                    }
+                    .title{
+                        font-size: 19px;
+                        color: $primaryColor;
+                        font-weight: 400;
+                    }
+                    .noti-wrapper{
+                        width: 50px;
+                        height: 80%;
+                        position: absolute;
+                        right: 10px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 100px;
+                        background-color: #3939392a;                        
+                    }  
+                }              
 
             }
         }
@@ -67,234 +99,211 @@ body{
                 flex-direction: column;
                 align-items: center;
 
-                .latest-post{
-                    width: 100%;
-                    // height: 250px;
-                    position: relative;
-                    flex-direction: column;
-                    display: flex;
-                    justify-content: start;
-                    align-items: center;
-
-                    .label{
-                      width: 95%;
-                      border-bottom: 1px rgba($color: #000000, $alpha: .1) solid;
-                      height: 40px;
-                      display: flex;
-                      align-items: center;
-                      font-size: 18px;
-                    }
-                    .contents{
-                        width: 100%;
-                        height: calc(250px - 40px);
-                        display: grid;
-                        grid-auto-flow: column;
-                        align-items: center;
-                        overflow-x: scroll;
-                        scrollbar-width: none;
-                        &::-webkit-scrollbar{
-                            display: none;
-                        }
-                        
-                        .post-card{
-                            width: 85vw;
-                            height: 95%;
-                            margin-left: 5px;
-                            margin-right: 5px;
-                            border-radius: 5px 5px 5px 5px;
-                            display: flex;
-                            flex-direction: column;
-                            border-style: solid;
-                            border: 1px rgba($color: #000000, $alpha: .2) solid;
-
-                            .image-frame{
-                                width: 100%;
-                                height: calc(100% - 60px);
-                                background-color: chartreuse;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                position: relative;
-
-                                img{
-                                    width: 100%;
-                                }
-                                .interaction-cont{
-                                    width: 60px;
-                                    height: 98%;
-                                    border-radius: 8px;
-                                    background-color: rgba(241, 241, 241, 0.87);
-                                    position: absolute;
-                                    right: 4px;
-                                    display: flex;
-
-                                    flex-direction: column;
-                                   
-                                    .view-ico{
-                                        width: 100%;
-                                        height: 50px;
-                                        display: flex;
-                                        justify-content: center;
-                                        align-items: center;
-
-                                        .fas{
-                                            font-size: 20px;
-                                        }
-                                    }
-                                    .like-btn{
-                                        width: 100%;
-                                        height: 50px;
-                                        display: flex;
-                                        justify-content: center;
-                                        align-items: center;
-                                        border-top: 1px rgba(255, 255, 255, 0.308) solid;
-
-                                        .far{
-                                            font-size: 20px;
-                                        }
-                                    }
-                                    .counts{
-                                        width: 100%;
-                                        height: 30px;
-                                        display: flex;
-                                        font-weight: 400;
-                                        font-size: 15px;
-                                        justify-content: center;
-                                        // align-items: center;
-                                    }
-                                }
-                            }
-                            .caption-box{
-                                width: 100%;
-                                height: 60px;
-                                background-color: $grayTube;
-                                display: flex;
-                                flex-direction: row;
-                                justify-content: center;
-                                align-items: center;
-                                position: relative;
-                                column-gap: 8px;
-
-                                .profile-bubble{
-                                    width: 45px;
-                                    height: 45px;
-                                    position: absolute;
-                                    left: 10px;
-                                    border-radius: 100px;
-                                    overflow: hidden;
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    background-color: orange;
-                                    border: 2px blueviolet solid;
-
-                                    img{
-                                        width: 100%;
-                                    }
-                                }
-                                .caption-container{
-                                    width: 50%;
-                                    height: 50px;
-                                    display: flex;
-                                    position: absolute;
-                                    left: calc(10px + 45px + 15px);
-                                    align-items: center;
-                                    flex-direction: column;
-                                    justify-content: center;
-                                    
-                                    .caption-header{
-                                        width: 100%;
-                                        font-size: 16px;
-                                        font-weight: 600;
-
-                                        .i{
-                                            font-weight: 400;
-                                            font-size: 14px;
-                                        }
-                                    }
-                                }
-                                .btn-container{
-                                    width: 45px;
-                                    height: 45px;
-                                    position: absolute;
-                                    right: 10px;
-                                    border-radius: 100px;
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    background-color: #fff;
-                                    border: 1px rgba($color: #000000, $alpha: .1) solid;
-
-                                    .fas{
-                                        font-size: 18px;
-                                        color: blueviolet;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                .trending{
-                    width: 100%;
-                    // height: 150px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-
-                    .label{
-                        width: 95%;
-                        border-bottom: 1px rgba($color: #000000, $alpha: .1) solid;
-                        height: 40px;
-                        display: flex;
-                        align-items: center;
-                        font-size: 18px;
-                      }
-                    .contents{
-                        width: 100%;
-                        height: calc(160px - 40px);
-                        display: grid;
-                        grid-auto-flow: column;
-                        align-items: center;
-                        overflow-x: scroll;
-                        scrollbar-width: none;
-                        &::-webkit-scrollbar{
-                            display: none;
-                        }
-                        justify-content: start;
-
-                        .trend-bubble{
-                            width: 100px;
-                            height: 100px;
-                            border-radius: 100px;
-                            margin: 0px 5px 0px 5px;
-                            display: flex;
-                            overflow: hidden;
-                            justify-content: center;
-                            align-items: center;
-                            border: 3px blueviolet dotted;
-
-                            img{
-                                width: auto;
-                            }
-                        }
-                    }
-                }
                 .post-container{
                     width: 100%;
                     display: flex;
                     row-gap: 10px;
+                    margin-top: 5px;
                     flex-direction: column;
                     align-items: center;
                     padding-bottom: 5px;
 
                     .post-card{
-                        width: 95%;
-                        height: 200px;
+                        width: 100%;
                         margin-left: 5px;
                         margin-right: 5px;
-                        border-radius: 5px 5px 5px 5px;
-                        background-color: steelblue;
+                        display: flex;
+                        flex-direction: column;
+                        justify-items: center;
+                        align-items: center;
+
+                        .post-header{
+                            width: 100%;
+                            height: 45px;
+                            display: flex;
+                            flex-direction: row;
+                            justify-items: center;
+                            align-items: center;
+                            position: relative;
+                            background-color: $grayTube;
+                            
+                            .profile-wrapper{
+                                height: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+
+                                .profile-ico{
+                                    width: 35px;
+                                    border-radius: 100px;
+                                    position: absolute;
+                                    left: 10px;
+                                    height: 35px;
+                                    border: 2px $primaryColor solid;
+                                    background-color: $morningHue2;
+                                    overflow: hidden;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    
+                                    img{
+                                        width: 100%;
+                                    }
+                                }
+                                .user-name{
+                                    position: absolute;
+                                    left: calc(10px + 35px + 10px);
+                                    font-weight: 400;
+                                    font-size: 17px;
+                                    color: $shadeBlack;
+                                }
+                            }
+                            .option-toggle{
+                                width: 35px;
+                                height: 35px;
+                                position: absolute;
+                                right: 10px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 100px;
+
+                                img{
+                                    width: 21px;
+                                }
+                            }
+
+                        }
+                        .post-content{
+                            width: 100%;
+                            height: 180px;
+
+                            .img-frame{
+                                width: 100%;
+                                height: 100%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                overflow: hidden;
+                                
+                                img{
+                                    width: 100%;
+                                }
+                                .heart-pop{
+                                    width: 80px;
+                                    height: 80px;
+                                    position: absolute;
+                                    display: none;
+                                    justify-content: center;
+                                    align-items: center;
+                                    
+                                    svg{
+                                        width: 100%;
+                                    }
+                                }
+                                .liked{
+                                    display: flex;
+                                    animation: 2s like-heart-animation ease-in-out infinite;
+                                }
+
+                                @keyframes like-heart-animation {
+                                    0%,
+                                    to {
+                                      opacity: 0;
+                                      -webkit-transform: scale(0);
+                                      transform: scale(0);
+                                    }
+                                    15% {
+                                      opacity: 0.9;
+                                      -webkit-transform: scale(1.2);
+                                      transform: scale(1.2);
+                                    }
+                                    30% {
+                                      -webkit-transform: scale(0.95);
+                                      transform: scale(0.95);
+                                    }
+                                    45%,
+                                    80% {
+                                      opacity: 0.9;
+                                      -webkit-transform: scale(1);
+                                      transform: scale(1);
+                                    }
+                                  }
+                            }
+                        }
+                        .post-footer{
+                            width: 100%;
+                            border-bottom: 1px $border solid;
+                            background-color: $grayTube;
+
+                            .top-footer{
+                                width: 100%;
+                                height: calc(80px - 40px);
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                position: relative;
+
+                                .action-box{
+                                    position: absolute;
+                                    height: 100%;
+                                    left: 10px;
+                                    column-gap: 15px;
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+
+                                    .like-box{
+                                        display: flex;
+                                        align-items: center;
+                                        flex-direction: row;
+                                        column-gap: 5px;
+
+                                        .like-counts{
+                                            color: $shadeBlack;
+                                            font-weight: 300;
+                                        }
+                                    }
+                                }
+                                .comment-toggle{
+                                    height: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    flex-direction: row;
+                                    column-gap: 5px;
+                                    position: absolute;
+                                    right: 10px;
+                                    justify-content: center;
+                                    align-items: center;
+
+                                    .comment-counts{
+                                        font-weight: 300;
+                                        color: $shadeBlack;
+                                    }
+                                }
+                            
+                            }
+                            .bottom-footer{
+                                width: 100%;
+                                height: calc(80px - 40px + 10px);
+                                position: relative;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                .comment-wrapper{
+                                    width: 90%;
+                                    position: absolute;
+                                    left: 10px;
+
+                                    .comment{
+                                        width: 100%;
+                                        word-wrap: break-word;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -342,13 +351,31 @@ body{
                             color: rgb(93, 24, 158);
                         }
                     }
+                    &:nth-of-type(6){
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .user-profile{
+                            width: 35px;
+                            height: 35px;
+                            border: 2px $primaryColor solid;
+                            border-radius: 100px;
+                            overflow: hidden;
+    
+                            img{
+                                width: 100%;
+                            }
+                        }
+                    }
+                    
                 }
                 .active{
-                    color: blueviolet;
+                    color: $primaryColor;
                     transition: 0.3s ease-in;
                     .fas{
                         font-size: 25px;
-                        color: blueviolet;
+                        color: $primaryColor;
                         &:active{
                             color: rgb(93, 24, 158);
                         }
@@ -357,10 +384,10 @@ body{
                 .plus{
                     position: absolute;
                     z-index: 1;
-                    width: 60px;
-                    height: 60px;
+                    width: 50px;
+                    height: 50px;
                     border-radius: 100px;
-                    background-color: blueviolet;
+                    background-color: $primaryColor;
                     bottom: calc(50px / 2);
                     border: 2px rgba(255, 255, 255, 0.15) solid;
             
@@ -370,7 +397,7 @@ body{
                     }
                 }
                 .empty{
-                    width: 40px;
+                    width: 60px;
                 }
             }
         }
