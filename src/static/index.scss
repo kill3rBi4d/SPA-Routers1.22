@@ -1,14 +1,16 @@
 $grayTube: #FDFDFD;
-$primaryColor: #8A2BE2;
-$secondaryColor: #FF9900;
+$primaryColor: #1971FB;
+$secondaryColor: #E6E8EC;
 $morningHue1: #D0CDE1;
 $morningHue2: #B7B2D7;
 $gradientSec: #AE71E7;
 $facebookBlue: #4164BF;
-$googleRed: #4164BF;
+$googleRed: #C34040;
 $shadeBlack: #393939;
 $shadeGray: #626262;
-$border: #F1F1F1;
+$border: #C9C8CA;
+$inputBG1: #9E9E9F;
+$active: #62626221;
 
 body{
     margin: 0%;
@@ -30,7 +32,7 @@ body{
         flex-direction: column;
         align-items: center;
         overflow: hidden;
-        background-color: $grayTube;
+        background-color: $secondaryColor;
 
         .top-bar{
             width: 100%;
@@ -54,19 +56,45 @@ body{
                     height: 100%;
                     display: flex;
                     align-items: center;
-                    justify-content: center;
+                    justify-content: space-between;
                     position: relative;
 
                     .logo{
-                        width: 90px;
+                        width: 80px;
+                        position: absolute;
+                        left: 15px;
                     }
                     .title{
                         font-size: 19px;
                         color: $primaryColor;
                         font-weight: 400;
                     }
+                    .friends-wrapper{
+                        width: 40px;
+                        height: 80%;
+                        position: absolute;
+                        right: calc(10px + 40px + 5px);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 100px;
+
+                        path{
+                            fill: $primaryColor;
+                        }
+                        .alert{
+                            position: absolute;
+                            bottom: 10%;
+                            left: 10%;
+                            width: 13px;
+                            height: 13px;
+                            border-radius: 100px;
+                            border: 2px $grayTube solid;
+                            background-color: $googleRed;
+                        }
+                    }
                     .noti-wrapper{
-                        width: 50px;
+                        width: 40px;
                         height: 80%;
                         position: absolute;
                         right: 10px;
@@ -74,7 +102,20 @@ body{
                         justify-content: center;
                         align-items: center;
                         border-radius: 100px;
-                        background-color: #3939392a;                        
+
+                        path{
+                            fill: $primaryColor;
+                        }
+                        .alert{
+                            position: absolute;
+                            bottom: 10%;
+                            left: 10%;
+                            width: 13px;
+                            height: 13px;
+                            border-radius: 100px;
+                            border: 2px $grayTube solid;
+                            background-color: $googleRed;
+                        }
                     }  
                 }              
 
@@ -82,15 +123,17 @@ body{
         }
         .page-container{
             width: 100%;
-            height: calc(100vh - 50px - 60px);
-            background-color: #fff;
+            height: calc(100vh - 50px - 50px);
+            background-color: $secondaryColor;
 
             .home{
                 background-color: transparent;
                 width: 100%;
                 height: 100%;
+                top: 0%;
                 overflow: hidden;
                 overflow-y: scroll;
+                position: relative;
                 scrollbar-width: none;
                 &::-webkit-scrollbar{
                     display: none;
@@ -98,15 +141,143 @@ body{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                row-gap: 5px;
 
+                .share-post-wrapper{
+                    width: 100%;
+                    height:50px;
+                    background-color: $grayTube;
+                    margin-top: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .s-wrapper{
+                        width: 95%;
+                        height:50px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: row;
+                        column-gap: 5px;
+
+                        .prof-img{
+                            width: 40px;
+                            border-radius: 100px;
+                            height: 40px;
+                            overflow: hidden;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            // position: absolute;
+                            left: 10px;
+                            img{
+                                width: 100%;
+                            }
+                        }
+                        .post-input-container{
+                            height: 40px;
+                            flex-grow: 1;
+                            position: relative;
+                            border-radius: 100px;
+                            display: flex;
+                            align-items: center;
+                            border: 1px $border solid;
+                            transition: 0.4s ease;
+    
+                            span{
+                                position: absolute;
+                                left: 10px;
+                                color: $inputBG1;
+                                font-weight: 400;
+                                font-size: 15px;
+                            }
+    
+                            &:active{
+                                background-color: #62626228;
+                            }
+                        }
+                    }
+                  
+                }
+                .friend-sugg-wrapper{
+                    width: 100%;
+                    height: 140px;
+                    background-color: $grayTube;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    .top-tile{
+                        width: 95%;
+                        height: 35px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        
+                        .tt-text{
+                            font-size: 16px;
+                            color: $shadeBlack;
+                            font-weight: 400;
+                        }
+                        .tt-btn{
+                            padding: 3px;
+                            border-radius: 100px;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-self: center;
+                            column-gap: 5px;
+                            transition: 0.3s ease;
+
+                            span{
+                                color: $primaryColor;
+                            }
+                            &:active{
+                            background-color: #62626221;
+                            }
+                        }
+                    }
+                    .bottom-tile{
+                        width: 100%;
+                        height: calc(140px - 30px);
+                        background-color: $grayTube;
+                        display: grid;
+                        grid-auto-flow: column;
+                        align-items: center;
+                        overflow: hidden;
+                        overflow-x: auto;
+                        &::-webkit-scrollbar{
+                            display: none;
+                        }
+                        scrollbar-width: none;
+
+                        .sug{
+                            width: 85px;
+                            height: 85px;
+                            border-radius: 100px;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-left: 5px;
+                            margin-right: 5px;
+                            img{
+                                width: 100%;
+                            }
+                        }
+                    }
+
+                }
                 .post-container{
                     width: 100%;
                     display: flex;
                     row-gap: 10px;
-                    margin-top: 5px;
                     flex-direction: column;
                     align-items: center;
                     padding-bottom: 5px;
+                    background-color: $gradientSec;
 
                     .post-card{
                         width: 100%;
@@ -116,32 +287,32 @@ body{
                         flex-direction: column;
                         justify-items: center;
                         align-items: center;
+                        background-color: $border;
+                        // overflow: hidden;
 
                         .post-header{
                             width: 100%;
                             height: 45px;
                             display: flex;
                             flex-direction: row;
-                            justify-items: center;
+                            justify-content: center;
                             align-items: center;
                             position: relative;
                             background-color: $grayTube;
                             
                             .profile-wrapper{
+                                width: 95%;
                                 height: 100%;
                                 display: flex;
                                 flex-direction: row;
                                 justify-content: center;
                                 align-items: center;
+                                column-gap: 5px;
 
                                 .profile-ico{
-                                    width: 35px;
+                                    width: 30px;
+                                    height: 30px;
                                     border-radius: 100px;
-                                    position: absolute;
-                                    left: 10px;
-                                    height: 35px;
-                                    border: 2px $primaryColor solid;
-                                    background-color: $morningHue2;
                                     overflow: hidden;
                                     display: flex;
                                     justify-content: center;
@@ -151,37 +322,79 @@ body{
                                         width: 100%;
                                     }
                                 }
-                                .user-name{
-                                    position: absolute;
-                                    left: calc(10px + 35px + 10px);
+                                .header-content{
+                                    height: 40px;
                                     font-weight: 400;
-                                    font-size: 17px;
-                                    color: $shadeBlack;
+                                    display: flex;
+                                    flex-grow: 1;
+                                    flex-direction: column;
+                                    .name{
+                                        font-weight: 450;
+                                        font-size: 16px;
+                                        color: $shadeBlack;
+                                        transition: 0.3s ease;
+                                        border-radius: 2px;
+                                        &:active{
+                                            background-color: #62626221;
+                                        }
+                                    }
+                                    .time{
+                                        font-size: 13px;
+                                        font-weight: 400;
+                                        color:$shadeGray;
+                                    }
+                                }
+                                .option-toggle{
+                                    width: 35px;
+                                    height: 35px;
+                                    // position: absolute;
+                                    // right: 10px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 4px;
+                                    transition: 0.3s ease;
+                                    &:active{
+                                        background-color: #62626221;
+                                    }
+    
+                                    img{
+                                        width: 20px;
+                                    }
                                 }
                             }
-                            .option-toggle{
-                                width: 35px;
-                                height: 35px;
-                                position: absolute;
-                                right: 10px;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                border-radius: 100px;
-
-                                img{
-                                    width: 21px;
-                                }
-                            }
-
                         }
                         .post-content{
                             width: 100%;
-                            height: 180px;
+                            background-color: $grayTube;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
 
+                            .post-content-wrapper{
+                                width: 95%;
+                                padding-bottom: 5px;
+
+                                .post-title{
+                                    font-weight: 600;
+                                    color: $shadeBlack;
+                                    font-size: 16px;
+                                }
+                                .more{
+                                    color: $primaryColor;
+                                    font-weight: 500;
+                                    transition: 0.3s ease;
+
+                                    &:active{
+                                        color: #0060fb;
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
                             .img-frame{
                                 width: 100%;
-                                height: 100%;
+                                background-color: $shadeBlack;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
@@ -206,101 +419,312 @@ body{
                                     display: flex;
                                     animation: 2s like-heart-animation ease-in-out infinite;
                                 }
-
-                                @keyframes like-heart-animation {
-                                    0%,
-                                    to {
-                                      opacity: 0;
-                                      -webkit-transform: scale(0);
-                                      transform: scale(0);
-                                    }
-                                    15% {
-                                      opacity: 0.9;
-                                      -webkit-transform: scale(1.2);
-                                      transform: scale(1.2);
-                                    }
-                                    30% {
-                                      -webkit-transform: scale(0.95);
-                                      transform: scale(0.95);
-                                    }
-                                    45%,
-                                    80% {
-                                      opacity: 0.9;
-                                      -webkit-transform: scale(1);
-                                      transform: scale(1);
-                                    }
-                                  }
                             }
                         }
                         .post-footer{
                             width: 100%;
                             border-bottom: 1px $border solid;
                             background-color: $grayTube;
+                            position: relative;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
 
                             .top-footer{
                                 width: 100%;
-                                height: calc(80px - 40px);
+                                height: calc(80px - 50px);
                                 display: flex;
                                 flex-direction: row;
                                 align-items: center;
                                 position: relative;
+                                overflow: hidden;
+                                background-color: $grayTube;
+                                align-items: center;
+                                padding-left: 10px;
+                                column-gap: 5px;
+                                color: $shadeGray;
+                                border-bottom: 1px $border solid;
 
-                                .action-box{
-                                    position: absolute;
-                                    height: 100%;
-                                    left: 10px;
-                                    column-gap: 15px;
-                                    display: flex;
-                                    flex-direction: row;
-                                    align-items: center;
-
-                                    .like-box{
-                                        display: flex;
-                                        align-items: center;
-                                        flex-direction: row;
-                                        column-gap: 5px;
-
-                                        .like-counts{
-                                            color: $shadeBlack;
-                                            font-weight: 300;
-                                        }
-                                    }
+                                span{
+                                    color: $shadeGray;
+                                    font-size: 15px;
+                                    font-weight: 400;
                                 }
-                                .comment-toggle{
+
+                            }
+                            .collect{
+                                width: 100%;
+                                height: 35px;
+                                background-color: #f1f1f1de;
+                                position: absolute;
+                                top: calc(-35px);
+                                display: none;
+                                justify-content: space-between;
+                                align-items: center;
+                                z-index: 1;
+
+                                .saved{
                                     height: 100%;
-                                    display: flex;
-                                    align-items: center;
-                                    flex-direction: row;
-                                    column-gap: 5px;
                                     position: absolute;
-                                    right: 10px;
+                                    left: 10px;
+                                    display: flex;
                                     justify-content: center;
                                     align-items: center;
-
-                                    .comment-counts{
-                                        font-weight: 300;
-                                        color: $shadeBlack;
-                                    }
+                                    font-weight: 300;
                                 }
-                            
+                                .view{
+                                    position: absolute;
+                                    right: 10px;
+                                    text-decoration: none;
+                                    font-weight: 400;
+                                }
+                            }
+                            .collected{
+                                display: flex;
+                                animation: fade-in-up 1s ease forwards;
                             }
                             .bottom-footer{
                                 width: 100%;
-                                height: calc(80px - 40px + 10px);
                                 position: relative;
+                                display: flex;
+                                justify-content: left;
+                                align-items: center;
+                                flex-direction: row;
+                                overflow: hidden;
+
+                                .action-container{
+                                    height: 100%;
+                                    display: flex;
+                                    padding: 10px;
+                                    flex-direction: row;
+                                    column-gap: 5px;
+                                    justify-content: center;
+                                    align-items: center;
+                                    transition: 0.3s ease;
+                                    overflow: hidden;
+                                    
+                                    &:active{
+                                        background-color: #c9c8ca6c;
+                                    }
+                                    span{
+                                        color: $shadeGray;
+                                        font-weight: 400;
+                                        font-size: 15px;
+                                    }
+                                    .on-like{
+                                        animation: like-icon-animation 1s ease-out forwards;
+                                    }
+                                }
+                                .collect-btn{
+                                    position: absolute !important;
+                                    right: 10px;
+                                }
+                            }
+                        }
+                    }
+                    .eoc{
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 10px;
+                        row-gap: 10px;
+    
+                        img{
+                            width: 20%;
+                        }
+                        .bottom-label{
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+    
+                            span{
+                                position: absolute;
+                                color: $shadeGray;
+                                font-weight: 400;
+                                background-color: $secondaryColor;
+                                padding: 3px;
+                                font-size: 14px;
+                            }
+                            hr{
+                                width: 200px;
+                                border-color: $border;
+                            }
+                        }
+                    }
+                }
+                
+                .menu{
+                    width: 100vw;
+                    height: 100vh;
+                    bottom: 0%;
+                    background-color: #0000007e;
+                    position: absolute;
+                    z-index: 99;
+                    transition: background 0.4s ease-out;
+
+                    .menu-container{
+                        width: 100%;
+                        // height: 30px;
+                        background-color: $grayTube;
+                        position: absolute;
+                        bottom: 0%;
+                        display: flex;
+                        flex-direction: column;
+                        padding: 5px 0px 5px 0px;
+                        justify-content: center;
+                        align-items: center;
+                        overflow: hidden;
+                        row-gap: 5px;
+                        animation: in-up 0.5s ease-out forwards;
+                        border-radius: 20px 20px 0px 0px;
+
+                        .bubble-container{
+                            width: 100%;
+                            height: 95px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-bottom: 1px $border solid;
+                            flex-direction: row;
+                            column-gap: 5px;
+
+                            .bubble{
+                                width: 90px;
+                                height: 90px;
                                 display: flex;
                                 justify-content: center;
                                 align-items: center;
+                                flex-direction: column;
+                                row-gap: 5px;
+                                .b-icon{
+                                    width: 60px;
+                                    height: 60px;
+                                    border-radius: 100px;
+                                    border: 1px $shadeBlack solid;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                                .label{
+                                    width: 100%;
+                                    font-weight: 400;
+                                    display: flex;
+                                    font-size: 16px;
+                                    justify-content: center;
+                                    align-items: center;
+                                    color: $shadeBlack;
+                                }
+                            }
+                            .red{
+                                .b-icon{
+                                    border: 1px $googleRed solid;
+                                }
+                                .label{
+                                    width: 100%;
+                                    color: $googleRed;
+                                }
+                            }
+                        }
+                        .options-container{
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            overflow: hidden;
 
-                                .comment-wrapper{
-                                    width: 90%;
-                                    position: absolute;
-                                    left: 10px;
+                            .option{
+                                width: 100%;
+                                height: 40px;
+                                display: flex;
+                                align-items: center;
+                                overflow: hidden;
+                                padding-left: 20px;
 
-                                    .comment{
-                                        width: 100%;
-                                        word-wrap: break-word;
-                                    }
+                                span{
+                                    font-size: 400;
+                                    font-size: 15px;
+                                    color: $shadeBlack;
+                                }
+                            }
+                        }
+                    }
+                }
+                .post-menu{
+                    width: 100%;
+                    height: 100vh;
+                    bottom: 0%;
+                    background-color: #cc3c3c7e;
+                    position: absolute;
+                    z-index: 99;
+                    transition: background 0.4s ease-out;
+
+                    .post-menu-container{
+                        width: 100%;
+                        // height: 30px;
+                        background-color: $grayTube;
+                        position: absolute;
+                        bottom: 0%;
+                        display: flex;
+                        flex-direction: column;
+                        padding: 5px 0px 5px 0px;
+                        justify-content: center;
+                        align-items: center;
+                        overflow: hidden;
+                        row-gap: 5px;
+                        border-radius: 20px 20px 0px 0px;
+                        animation: in-up 0.5s ease-out forwards;
+
+                        
+
+                        .post-bubble-container{
+                            width: 100%;
+                            height: 95px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-bottom: 1px $border solid;
+                            flex-direction: row;
+                            column-gap: 5px;
+
+                            .post-bubble{
+                                width: 90px;
+                                height: 90px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-direction: column;
+                                row-gap: 5px;
+                                .b-icon{
+                                    width: 60px;
+                                    height: 60px;
+                                    border-radius: 100px;
+                                    display: flex;
+                                    background-color: $primaryColor;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                                .label{
+                                    width: 100%;
+                                    font-weight: 400;
+                                    display: flex;
+                                    font-size: 16px;
+                                    justify-content: center;
+                                    align-items: center;
+                                    color: $shadeBlack;
+                                }
+                            }
+                            .red{
+                                .b-icon{
+                                    border: 1px $googleRed solid;
+                                }
+                                .label{
+                                    width: 100%;
+                                    color: $googleRed;
                                 }
                             }
                         }
@@ -310,12 +734,12 @@ body{
         }
         .nav-bar{
             width: 100%;
-            height: 60px;
-            background-color: rgb(241, 241, 241);
+            height: 50px;
+            background-color: $grayTube;
             display: flex;
             justify-content: center;
             align-content: center;
-            border-radius: 20px 20px 0px 0px;
+            // border-radius: 20px 20px 0px 0px;    
             z-index: 9;
             border: 1px rgba($color: #000000, $alpha: .1) solid; 
             // box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: .4);
@@ -342,23 +766,23 @@ body{
                     border-radius: 4px;
                     transition: 0.3s ease-in;
                     outline: none;
+                    position: relative;
 
                     .fas{
-                        font-size: 25px;
-                        color: rgb(137, 43, 226);
+                        font-size: 30px;
                         transition: 0.3s ease-in;
                         &:active{
-                            color: rgb(93, 24, 158);
+                            color: $primaryColor;
                         }
                     }
-                    &:nth-of-type(6){
+                    &:nth-of-type(5){
                         display: flex;
                         justify-content: center;
                         align-items: center;
 
                         .user-profile{
-                            width: 35px;
-                            height: 35px;
+                            width: 25px;
+                            height: 25px;
                             border: 2px $primaryColor solid;
                             border-radius: 100px;
                             overflow: hidden;
@@ -368,7 +792,21 @@ body{
                             }
                         }
                     }
-                    
+                    .chat-alert{
+                        position: absolute;
+                        background-color: $primaryColor;
+                        color: $grayTube;
+                        font-weight: 300;
+                        padding: 5px;
+                        bottom: 5%;
+                        right: 15%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 15px;
+                        font-size: 15px;
+                        border-radius: 100px;
+                    }
                 }
                 .active{
                     color: $primaryColor;
@@ -387,17 +825,14 @@ body{
                     width: 50px;
                     height: 50px;
                     border-radius: 100px;
-                    background-color: $primaryColor;
-                    bottom: calc(50px / 2);
-                    border: 2px rgba(255, 255, 255, 0.15) solid;
-            
+                    background-color: $grayTube;
+                    bottom: calc(50px + 10px);
+                    right: calc(10px);
+                    box-shadow: 2px 3px 4px rgba($color: #000000, $alpha: .25);
                     .fas{
                         color: #fff;
-                        transition: 1s ease-in;
+                        transition: 0.2s ease-in;
                     }
-                }
-                .empty{
-                    width: 60px;
                 }
             }
         }

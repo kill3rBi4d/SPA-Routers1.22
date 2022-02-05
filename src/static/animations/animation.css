@@ -1,0 +1,142 @@
+@-webkit-keyframes in-up {
+  0%,
+  from {
+    opacity: 0.0;
+    bottom: -10px;
+  }
+  45%,
+  80% {
+    opacity: 1;
+    bottom: calc(0px);
+  }
+}
+
+@keyframes in-up {
+  0%,
+  from {
+    opacity: 0.0;
+    bottom: -10px;
+  }
+  45%,
+  80% {
+    opacity: 1;
+    bottom: calc(0px);
+  }
+}
+
+@-webkit-keyframes fade-in-up {
+  0%,
+  from {
+    opacity: 0.0;
+    top: 0;
+  }
+  45%,
+  80% {
+    opacity: 1;
+    top: calc(-35px);
+  }
+}
+
+@keyframes fade-in-up {
+  0%,
+  from {
+    opacity: 0.0;
+    top: 0;
+  }
+  45%,
+  80% {
+    opacity: 1;
+    top: calc(-35px);
+  }
+}
+
+@-webkit-keyframes like-icon-animation {
+  0%,
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  15% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  30% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  45%,
+  80% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes like-icon-animation {
+  0%,
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  15% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  30% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  45%,
+  80% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-webkit-keyframes like-heart-animation {
+  0%,
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  15% {
+    opacity: 0.9;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  30% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  45%,
+  80% {
+    opacity: 0.9;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes like-heart-animation {
+  0%,
+  to {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  15% {
+    opacity: 0.9;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  30% {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+  45%,
+  80% {
+    opacity: 0.9;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/*# sourceMappingURL=animation.css.map */
