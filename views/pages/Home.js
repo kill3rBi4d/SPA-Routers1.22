@@ -122,7 +122,7 @@ let Home = {
                             <div class="post-content-wrapper">
                                 <span class="post-title">This is so amazing Tulip garden ☺.</span><br>
                                 <span class="post-desc-text" id="description"></span>
-                                <span class="more" id="more">View more</span>
+                                <span class="more" id="more">Expand</span>
                             </div>
                             <div class="img-frame" id="img-frame">
                                 <div class="heart-pop" id="heart-pop">
@@ -306,7 +306,7 @@ let Home = {
 
         function viewMore(a, b){
             a.addEventListener('click', () => {
-                a.innerText = a.innerText === 'View more' ? 'View less' : 'View more'
+                a.innerText = a.innerText === 'Expand' ? 'Collapse' : 'Expand'
                 b.innerHTML = b.innerHTML.length <= 102 ? replaceURLs(comment) : limit(replaceURLs(comment), 100) + '..'
                 console.log('more comments clicked')
             })

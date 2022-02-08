@@ -5,6 +5,7 @@ import Explore from './views/pages/Explore.js'
 import NewPost from './views/pages/NewPost.js'
 import Collections from './views/pages/Collections.js'
 import Profile from './views/pages/Profile.js'
+import Error404 from './views/pages/Error404.js'
 
 import Utils        from './services/Utils.js'
 import Topbar from './views/components/TopBar.js'
@@ -16,12 +17,13 @@ const routes = {
     , '/explore'            : Explore
     , '/collections'        : Collections
     , '/profile'            : Profile
+    , '/explore-post'     : Explore
 }
 let offRoutes = {}
 
+
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
 const router = async () => {
-
     //load view element and btns
     const topBar = document.getElementById('top-bar'),
         contianer = document.getElementById('page_container'),
@@ -44,16 +46,13 @@ const router = async () => {
     offRoutes = {
         '/createpost': Object.values(routes)
        ,'/menu': Home
-        ,'/setting-menu': Profile
+       ,'/setting-menu': Profile
     }
-    console.log(offRoutes[parsedURL])
     //Change navbar styles according to current page
     navigateStyle(parsedURL)
-    
     // Get the page from our hash of supported routes.
     // If the parsed URL is not in our list of supported routes, select the 404 page instead
-    let page = routes[parsedURL] ? routes[parsedURL] 
-        :  offRoutes[parsedURL]
+    let page = routes[parsedURL] ? routes[parsedURL] : Error404  
     contianer.innerHTML = await page.render()
     await page.after_render()
 
@@ -78,7 +77,7 @@ const navigateStyle = async (url) => {
     exploreIco.src = url === '/explore' ? srcLink+'explore-fill.svg' : srcLink+'explore.svg'
     // collectionIco.src = url === '/collections' ? srcLink+'collection-fill.svg' : srcLink+'collection.svg'
     profIco.style.color = url == '/profile' ? icoActive : icoDisable
-
+    plusIco.style.display = url !== '/' ? 'none' : 'flex'
     title.innerText = url === '/' ? '' 
         : url === '/explore' ? 'Explore' 
         : url === '/creatpost' ? '' 

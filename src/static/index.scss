@@ -67,7 +67,9 @@ body{
                     .title{
                         font-size: 19px;
                         color: $primaryColor;
-                        font-weight: 400;
+                        font-weight: 500;
+                        position: absolute;
+                        left: 15px;
                     }
                     .friends-wrapper{
                         width: 40px;
@@ -78,7 +80,7 @@ body{
                         justify-content: center;
                         align-items: center;
                         border-radius: 100px;
-
+                        transition: 0.3s ease;
                         path{
                             fill: $primaryColor;
                         }
@@ -91,6 +93,9 @@ body{
                             border-radius: 100px;
                             border: 2px $grayTube solid;
                             background-color: $googleRed;
+                        }
+                        &:active{
+                            background-color: $active;
                         }
                     }
                     .noti-wrapper{
@@ -102,7 +107,7 @@ body{
                         justify-content: center;
                         align-items: center;
                         border-radius: 100px;
-
+                        transition: 0.3s ease;
                         path{
                             fill: $primaryColor;
                         }
@@ -115,6 +120,9 @@ body{
                             border-radius: 100px;
                             border: 2px $grayTube solid;
                             background-color: $googleRed;
+                        }
+                        &:active{
+                            background-color: $active;
                         }
                     }  
                 }              
@@ -130,7 +138,6 @@ body{
                 background-color: transparent;
                 width: 100%;
                 height: 100%;
-                top: 0%;
                 overflow: hidden;
                 overflow-y: scroll;
                 position: relative;
@@ -277,7 +284,6 @@ body{
                     flex-direction: column;
                     align-items: center;
                     padding-bottom: 5px;
-                    background-color: $gradientSec;
 
                     .post-card{
                         width: 100%;
@@ -556,7 +562,6 @@ body{
                         }
                     }
                 }
-                
                 .menu{
                     width: 100vw;
                     height: 100vh;
@@ -728,6 +733,434 @@ body{
                                 }
                             }
                         }
+                    }
+                }
+            }
+            .explore{
+                background-color: transparent;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                overflow-y: scroll;
+                // position: relative;
+                scrollbar-width: none;
+                &::-webkit-scrollbar{
+                    display: none;
+                }
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 5px;
+
+                .cat-container{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding-top: 5px;
+                    flex-direction: column;
+                    .cat-viewpot{
+                        width: 100%;
+                        display: grid;
+                        grid-auto-flow: column;
+                        overflow-y: scroll;
+                        &::-webkit-scrollbar{
+                            display: none;
+                        }
+                        scrollbar-width: none;
+                        align-items: center;
+
+                        .cat-wrapper{
+                            width: 850px;
+                            height: 85px;
+                            display: flex;
+                            row-gap: 5px;
+                            column-gap: 5px;
+                            flex-direction: row;
+                            flex-wrap: wrap;
+                            margin: 0px 5px 0px 5px;
+                            .cat-card{
+                                background-color: $grayTube;
+                                height:40px;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                border-radius: 5px;
+                                color: $shadeBlack;
+                                font-weight: 400;
+                                font-size: 15.5px;
+                                flex-direction: row;
+                                column-gap: 10px;
+                                transition: 0.3s ease;
+                                text-decoration: none;
+
+                                .e-search{
+                                    padding: 5px;
+                                    transition: 0.3s ease;
+                                    border-radius: 4px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    svg{
+                                        width: 14px;
+                                    }
+                                    &:active{
+                                        background-color: $active;
+                                    }
+                                }
+                                .search-bar{
+                                    border-radius: 4px;
+                                    outline: none;
+                                    border:none;
+                                    padding: 5px;
+                                    font-size: 16px;
+                                    color: $shadeBlack;                                    
+                                }
+                                .s-icon{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    padding: 5px;
+                                    border-radius: 3px;
+                                    transition: 0.3s ease;
+
+                                    &:active{
+                                        background-color: $active;
+                                    }
+                                }
+                                path{
+                                    fill:$shadeBlack;
+                                }
+                                &:active{
+                                    background-color: $active;
+                                }
+                            }
+                            .search{
+                                &:active{
+                                    background-color: none !important;
+                                }
+                            }
+                            .active{
+                                background-color: $primaryColor !important;
+                                color: $secondaryColor !important;
+
+                                path{
+                                    fill: $secondaryColor !important;
+                                }
+                            }
+                        }
+                    }
+                    .result-overview{
+                        width: 100%;
+                        padding: 5px;
+
+                        .result{
+                            color: $primaryColor;
+                            padding-left: 5px;
+                        }
+                    }
+                   
+                }
+                .post-container{
+                    width: 100%;
+                    display: flex;
+                    row-gap: 10px;
+                    flex-direction: column;
+                    align-items: center;
+                    padding-bottom: 5px;
+                    .post-card{
+                        width: 100%;
+                        margin-left: 5px;
+                        margin-right: 5px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-items: center;
+                        align-items: center;
+                        background-color: $border;
+                        // overflow: hidden;
+
+                        .post-header{
+                            width: 100%;
+                            height: 45px;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            position: relative;
+                            background-color: $grayTube;
+                            
+                            .profile-wrapper{
+                                width: 95%;
+                                height: 100%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+                                column-gap: 5px;
+
+                                .profile-ico{
+                                    width: 30px;
+                                    height: 30px;
+                                    border-radius: 100px;
+                                    overflow: hidden;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    
+                                    img{
+                                        width: 100%;
+                                    }
+                                }
+                                .header-content{
+                                    height: 40px;
+                                    font-weight: 400;
+                                    display: flex;
+                                    flex-grow: 1;
+                                    flex-direction: column;
+                                    .name{
+                                        font-weight: 450;
+                                        font-size: 16px;
+                                        color: $shadeBlack;
+                                        transition: 0.3s ease;
+                                        border-radius: 2px;
+                                        &:active{
+                                            background-color: #62626221;
+                                        }
+                                    }
+                                    .time{
+                                        font-size: 13px;
+                                        font-weight: 400;
+                                        color:$shadeGray;
+                                    }
+                                }
+                                .option-toggle{
+                                    width: 35px;
+                                    height: 35px;
+                                    // position: absolute;
+                                    // right: 10px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 4px;
+                                    transition: 0.3s ease;
+                                    &:active{
+                                        background-color: #62626221;
+                                    }
+    
+                                    img{
+                                        width: 20px;
+                                    }
+                                }
+                            }
+                        }
+                        .post-content{
+                            width: 100%;
+                            background-color: $grayTube;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+
+                            .post-content-wrapper{
+                                width: 95%;
+                                padding-bottom: 5px;
+
+                                .post-title{
+                                    font-weight: 600;
+                                    color: $shadeBlack;
+                                    font-size: 16px;
+                                }
+                                .more{
+                                    color: $primaryColor;
+                                    font-weight: 500;
+                                    transition: 0.3s ease;
+
+                                    &:active{
+                                        color: #0060fb;
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+                            .img-frame{
+                                width: 100%;
+                                background-color: $shadeBlack;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                overflow: hidden;
+                                
+                                img{
+                                    width: 100%;
+                                    background-color: $shadeBlack;
+                                }
+                                .heart-pop{
+                                    width: 80px;
+                                    height: 80px;
+                                    position: absolute;
+                                    display: none;
+                                    justify-content: center;
+                                    align-items: center;
+                                    
+                                    svg{
+                                        width: 100%;
+                                    }
+                                }
+                                .liked{
+                                    display: flex;
+                                    animation: 2s like-heart-animation ease-in-out infinite;
+                                }
+                            }
+                        }
+                        .post-footer{
+                            width: 100%;
+                            border-bottom: 1px $border solid;
+                            background-color: $grayTube;
+                            position: relative;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+
+                            .top-footer{
+                                width: 100%;
+                                height: calc(80px - 50px);
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                position: relative;
+                                overflow: hidden;
+                                background-color: $grayTube;
+                                align-items: center;
+                                padding-left: 10px;
+                                column-gap: 5px;
+                                color: $shadeGray;
+                                border-bottom: 1px $border solid;
+
+                                span{
+                                    color: $shadeGray;
+                                    font-size: 15px;
+                                    font-weight: 400;
+                                }
+
+                            }
+                            .collect{
+                                width: 100%;
+                                height: 35px;
+                                background-color: #f1f1f1de;
+                                position: absolute;
+                                top: calc(-35px);
+                                display: none;
+                                justify-content: space-between;
+                                align-items: center;
+                                z-index: 1;
+
+                                .saved{
+                                    height: 100%;
+                                    position: absolute;
+                                    left: 10px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    font-weight: 300;
+                                }
+                                .view{
+                                    position: absolute;
+                                    right: 10px;
+                                    text-decoration: none;
+                                    font-weight: 400;
+                                }
+                            }
+                            .collected{
+                                display: flex;
+                                animation: fade-in-up 1s ease forwards;
+                            }
+                            .bottom-footer{
+                                width: 100%;
+                                position: relative;
+                                display: flex;
+                                justify-content: left;
+                                align-items: center;
+                                flex-direction: row;
+                                overflow: hidden;
+
+                                .action-container{
+                                    height: 100%;
+                                    display: flex;
+                                    padding: 10px;
+                                    flex-direction: row;
+                                    column-gap: 5px;
+                                    justify-content: center;
+                                    align-items: center;
+                                    transition: 0.3s ease;
+                                    overflow: hidden;
+                                    
+                                    &:active{
+                                        background-color: #c9c8ca6c;
+                                    }
+                                    span{
+                                        color: $shadeGray;
+                                        font-weight: 400;
+                                        font-size: 15px;
+                                    }
+                                    .on-like{
+                                        animation: like-icon-animation 1s ease-out forwards;
+                                    }
+                                }
+                                .collect-btn{
+                                    position: absolute !important;
+                                    right: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .eoc{
+                    display: none;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px;
+                    row-gap: 10px;
+
+                    img{
+                        width: 20%;
+                    }
+                    .bottom-label{
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+
+                        span{
+                            position: absolute;
+                            color: $shadeGray;
+                            font-weight: 400;
+                            background-color: $secondaryColor;
+                            padding: 3px;
+                            font-size: 14px;
+                        }
+                        hr{
+                            width: 200px;
+                            border-color: $border;
+                        }
+                    }
+                }
+                .view-post{
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: black;
+                    position: absolute;
+                    z-index: 999;
+                    top: 0%;
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+
+                    img{
+                        width: 100%;
                     }
                 }
             }
