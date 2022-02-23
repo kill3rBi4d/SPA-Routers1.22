@@ -3,7 +3,7 @@ body {
   padding: 0%;
   overflow: hidden;
   font-family: "Google Sans", sans-serif;
-  position: relative;
+  position: fixed;
   -webkit-tap-highlight-color: transparent !important;
   -webkit-user-select: none;
   -webkit-touch-callout: none;
@@ -1513,6 +1513,9 @@ body .wrapper .page-container .explore .post-container .post-card .post-content 
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
+  position: relative;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 body .wrapper .page-container .explore .post-container .post-card .post-content .img-frame img {

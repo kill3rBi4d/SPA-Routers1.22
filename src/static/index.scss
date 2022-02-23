@@ -17,7 +17,7 @@ body{
     padding: 0%;
     overflow: hidden;
     font-family: "Google Sans", sans-serif;
-    position: relative;
+    position: fixed;
     -webkit-tap-highlight-color: transparent !important;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
@@ -990,6 +990,8 @@ body{
                                 justify-content: center;
                                 align-items: center;
                                 overflow: hidden;
+                                position: relative;
+                                transform: translate3d(0, 0, 0);
                                 
                                 img{
                                     width: 100%;
