@@ -11,6 +11,8 @@ $shadeGray: #626262;
 $border: #C9C8CA;
 $inputBG1: #9E9E9F;
 $active: #62626221;
+$skelColor: lightgrey;
+$active1:rgba(25, 112, 251, 0.15);
 
 body{
     margin: 0%;
@@ -58,18 +60,42 @@ body{
                     align-items: center;
                     justify-content: space-between;
                     position: relative;
+                    overflow: hidden;
 
                     .logo{
                         width: 80px;
                         position: absolute;
                         left: 15px;
                     }
-                    .title{
-                        font-size: 19px;
-                        color: $primaryColor;
-                        font-weight: 500;
+                    .rtc{
+                        display: flex;
+                        align-items: center;
+                        // background-color: #1970fb27;
+                        flex-direction: row;
                         position: absolute;
-                        left: 15px;
+                        left: 10px;
+                        column-gap: 5px;
+
+                        .title{
+                            font-size: 19px;
+                            color: $primaryColor;
+                            font-weight: 500;
+                            // position: absolute;
+                            // left: 15px;
+                        }
+                        .back-btn{
+                            width: 40px;
+                            height: 40px;
+                            display: none;
+                            border-radius: 100px;
+                            justify-content: center;
+                            align-items: center;
+                            transition: 0.3s;
+
+                            &:active{
+                                background-color: $active1;
+                            }
+                        }
                     }
                     .friends-wrapper{
                         width: 40px;
@@ -90,12 +116,13 @@ body{
                             left: 10%;
                             width: 13px;
                             height: 13px;
+                            display: none;
                             border-radius: 100px;
                             border: 2px $grayTube solid;
                             background-color: $googleRed;
                         }
                         &:active{
-                            background-color: $active;
+                            background-color: $active1;
                         }
                     }
                     .noti-wrapper{
@@ -117,6 +144,7 @@ body{
                             left: 10%;
                             width: 13px;
                             height: 13px;
+                            display: none;
                             border-radius: 100px;
                             border: 2px $grayTube solid;
                             background-color: $googleRed;
@@ -145,10 +173,12 @@ body{
                 &::-webkit-scrollbar{
                     display: none;
                 }
-                display: flex;
+                display: none;
                 flex-direction: column;
                 align-items: center;
                 row-gap: 5px;
+                transition: 0.4s ease;
+                animation: slideIn 0.4s ease-in-out forwards;
 
                 .share-post-wrapper{
                     width: 100%;
@@ -400,6 +430,7 @@ body{
                             }
                             .img-frame{
                                 width: 100%;
+                                // height: 400px;
                                 background-color: $shadeBlack;
                                 display: flex;
                                 justify-content: center;
@@ -736,6 +767,199 @@ body{
                     }
                 }
             }
+            .home-skeleton{
+                background-color: $secondaryColor;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                overflow: hidden;
+                overflow-y: auto;
+                flex-direction: column;
+                // row-gap: 4px;
+                // justify-content: center;
+                align-items: center;
+                position: relative;
+                animation: slideIn 0.4s ease-in forwards;
+
+                .skelimate{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    z-index: 9;
+                    top: 0%;
+                    left: 0%;
+                    background: linear-gradient(
+                        to right,
+                        rgba(255, 255, 255, 0),
+                        rgba(255, 255, 255, 0.3) 50%,
+                        rgba(255, 255, 255, 0) 80%
+                    ), #00000000;
+                    background-repeat: repeat-y;
+                    background-size: 60px 500px;
+                    background-position: 0 0;
+                    animation: shine 2.5s infinite;
+                }
+                .skel-1{
+                    width: 100%;
+                    height: 60px;
+                    background-color: $grayTube;
+                    display: flex;
+                    // margin-top: 4px;
+                    align-items: center;
+                    flex-direction: row;
+                    column-gap: 5px;
+                    padding: 5px;
+                    .s-1{
+                        width: 40px;
+                        height: 40px;
+                        margin-left: 5px;
+                        border-radius: 100px;
+                        background-color: $skelColor;
+                    }
+                    .s-2{
+                        width: calc(100vw - 55px);
+                        height: 40px;
+                        // flex-grow: 1;
+                        border-radius: 100px;
+                        background-color: $skelColor;
+                    }
+                }
+                .skel-2{
+                    width: 100%;
+                    height: 100px;
+                    background-color: $grayTube;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    row-gap: 5px;
+                    padding: 5px;
+                    margin-top: 2px;
+                    .c{
+                        width: 100%;
+                        height: 100%;
+                        display: grid;
+                        align-items: center;
+                        grid-auto-flow: column;
+                        gap: 1%;
+                        span{
+                            margin-left: 5px;
+                            width: 70px;
+                            border-radius: 100px;
+                            height: 70px;
+                            background-color: $skelColor;
+                        }
+                    }
+                }
+                .p-0{
+                    width: 100%;
+                    height: calc(100vh - 190px);
+                    background-color: $skelColor;
+                }
+            }
+            .e-skeleton{
+                width: 100%;
+                height: 100%;
+                background-color: blanchedalmond;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                animation: slideIn 0.4s ease-in-out forwards;
+
+                .skelemate-2{
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    z-index: 1;
+                    top: 0%;
+                    left: 0%;
+                    background: linear-gradient(
+                        to right,
+                        rgba(255, 255, 255, 0),
+                        rgba(255, 255, 255, 0.3) 50%,
+                        rgba(255, 255, 255, 0) 80%
+                    ), #00000000;
+                    background-repeat: repeat-y;
+                    background-size: 60px 500px;
+                    background-position: 0 0;
+                    animation: shine 2.5s infinite;
+                }
+                .s-coll{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    
+                    .e-1{
+                        width: 100%;
+                        background-color: $grayTube;
+                        display: flex;
+                        flex-direction: row;
+                        padding: 5px;
+                        align-items: center;
+    
+                        .ep{
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 100px;
+                            background-color: $skelColor;
+                        }
+                        .ec{
+                            width: calc(100vw - 60px);
+                            height: 50px;
+                            display: flex;
+                            row-gap: 10px;
+                            justify-content: center;
+                            flex-direction: column;
+    
+                            span{
+                                margin-left: 10px;
+                                border-radius: 5px;
+                                background-color: $skelColor;
+                            }
+                            span:nth-of-type(1){
+                                width: 45%;
+                                height: 20px;
+                            }
+                            span:nth-of-type(2){
+                                width: 60%;
+                                height: 15px;
+                            }
+                        }
+                    }
+                    .e-2{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        padding: 5px;
+                        background-color: $grayTube;
+                        justify-content: center;
+                        row-gap: 5px;
+                        padding-bottom: 15px;
+                        span{
+                            background-color: $skelColor;
+                            border-radius: 5px;
+                        }
+                        span:nth-of-type(1){
+                            margin-top: 10px;
+                            width: 80%;
+                            height: 15px;
+                        }
+                        span:nth-of-type(2){
+                            width: 95%;
+                            margin-top: 3px;
+                            height: 10px;
+                        }
+                        span:nth-of-type(3){
+                            width: 85%;
+                            height: 10px;
+                        }
+                    }
+                    .c-4{
+                        width: 100%;
+                        height: 230px;
+                        background-color: $skelColor;
+                    }
+                }
+            }
             .explore{
                 background-color: transparent;
                 width: 100%;
@@ -747,10 +971,11 @@ body{
                 &::-webkit-scrollbar{
                     display: none;
                 }
-                display: flex;
+                display: none;
                 flex-direction: column;
                 align-items: center;
                 row-gap: 5px;
+                animation: slideIn 0.4s ease-in forwards;
 
                 .cat-container{
                     width: 100%;
@@ -1235,7 +1460,7 @@ body{
                         padding: 5px;
                         bottom: 5%;
                         right: 15%;
-                        display: flex;
+                        display: none;
                         justify-content: center;
                         align-items: center;
                         height: 15px;

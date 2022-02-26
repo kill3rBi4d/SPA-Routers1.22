@@ -20,6 +20,31 @@ import Router from './literals/Router2.0.js'
 //     , '/profile'            : Profile
 //     , '/explore-post'     : Explore
 // }
+let categories = [
+    'video',
+    'food',
+    'pets',
+    'science',
+    'religion',
+    'movies',
+    'nature',
+    'education',
+    'music',
+    'travel',
+    'books',
+    'cars',
+    'technology',
+    'fashion',
+    'articles',
+    'memes',
+    'quotes',
+    'health',
+    'communition',
+    'industrial'
+]
+
+
+
 // let offRoutes = {}
 const router = new Router({
     mode: 'hash',
@@ -30,20 +55,16 @@ const topBar = document.getElementById('top-bar'),
         contianer = document.getElementById('page_container'),
         navBar= document.getElementById('nav-bar')
 
-// Get the parsed URl from the addressbar
-let request = Utils.parseRequestURL()
-//     // Parse the URL and if it has an id part, change it with the string ":id"
-let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
 // console.log(parsedURL)
-let _url = window.location.pathname
+// let _url = window.location.pathname
 
-console.log(_url)
+// console.log(_url)
 
 // Render the topbar and navbar
-topBar.innerHTML = await Topbar.render()
-await NavBar.after_render()
-navBar.innerHTML = await NavBar.render()
-await NavBar.after_render()
+// topBar.innerHTML = await Topbar.render()
+// await topBar.after_render()
+// navBar.innerHTML = await NavBar.render()
+// await NavBar.after_render()
 
 
 router
@@ -63,6 +84,18 @@ router
     Home.after_render()
 })
 
+//create new user (test)
+let _email = 'yasvan@irismail.com',
+    _pass = 'pwd12'
+
+async function createNewAccount(){
+    try{
+        const user = await firebase.auth().createUserWithAndPassword(_email, _pass)
+        console.log(user.uid)
+    }catch(error){
+        console.log(error)
+    }
+}
 
 /// The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
 // const router = async () => {
@@ -110,6 +143,10 @@ router
 navigateStyle()
 // console.log(parsedURL)
 function navigateStyle (){
+    // Get the parsed URl from the addressbar
+    let request = Utils.parseRequestURL()
+    // Parse the URL and if it has an id part, change it with the string ":id"
+    let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
 
     const srcLink = '/src/props/icons/'
     let isnotification = true,
@@ -126,13 +163,33 @@ function navigateStyle (){
         homeBtn = document.getElementById('home-btn'),
         exploreBtn = document.getElementById('explore-btn'),
         chatBtn = document.getElementById('chat-btn'),
-        profileBtn = document.getElementById('profile-btn')
+        profileBtn = document.getElementById('profile-btn'),
+        backBtn = document.getElementById('back-btn'),
+        fToggle = document.getElementById('friends-toggle'),
+        nToggle = document.getElementById('notification-toggle')
         // toggle = document.getElementById('header-toggle')
+
+
+    backBtn.addEventListener('click', () => {
+        setTimeout(() => {
+            history.back() 
+        }, 100)
+    })
     let isHome = true,
         isExplore = false,
         isChat = false,
         isProfile = false
-
+    fToggle.style.display = parsedURL === '/chats' ? 'none' 
+                : parsedURL === '/notifications' ? 'none' 
+                : parsedURL === '/profile' ? 'none'
+                : 'flex'
+    nToggle.style.display = parsedURL === '/chats' ? 'none' 
+                : parsedURL === '/notifications' ? 'none' 
+                : parsedURL === '/profile' ? 'none'
+                : 'flex' 
+    backBtn.style.display = parsedURL === '/chats' ? 'flex' 
+                : parsedURL === '/profile' ? 'flex'
+                : 'none'
     homeIco.src = parsedURL === '/' ? srcLink+'home-fill.svg' : srcLink + 'home.svg'
     exploreIco.src = parsedURL === '/explore' ? srcLink+'explore-fill.svg' : srcLink+'explore.svg'
     // collectionIco.src = parsedURL === '/collections' ? srcLink+'collection-fill.svg' : srcLink+'collection.svg'
@@ -145,13 +202,16 @@ function navigateStyle (){
         : parsedURL === '/profile' ? 'Profile'
         : parsedURL === '/setting-menu' ? 'Profile'
         : parsedURL === '/notifications' ? 'Notifications'
+        : parsedURL === '/friends' ? 'Friends'
+        : parsedURL === '/chats' ? 'Chats'
         : ''
     logo.style.display = parsedURL === '/' ? 'flex'
         : parsedURL === '/createpost' ? 'flex' 
         : parsedURL === '/menu' ? 'flex'
+        : parsedURL === '/friends' ? 'none'
         : 'none'
-    
-    console.log(parsedURL)
+
+    // console.log(parsedURL)
     // toggle.setAttribute(
     //     'href',
     //     parsedURL === '/profile' ? '/#/setting-menu'
@@ -237,11 +297,84 @@ function navigateStyle (){
     //     url === '/profile' ? '/#/setting-menu'
     //     : '/#/notifications'
     // )
-
-
-    
 }
 
+// for(let a = 0; a <= categories.length-1; a++){
+//     let insertFolder = firebase.database().ref(`root/usr`);
+//     insertFolder.push().set({
+//         'about': {
+//             'name': 'Muhammed Barry',
+//             'email': 'm@iris.mail.com',
+//             'phone': '06444232323',
+//             'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//             'location' : 'Aceh, Indonesia',
+//             'bio' : ' I realy like the view from here, here is the link to full photo album. https://bith3skdf.plantcode',
+//             'cover' : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2016%2F01%2F288299-forest-landscape.jpg&f=1&nofb=1'
+//         },
+//         'photos': {
+//             'cover' : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2016%2F01%2F288299-forest-landscape.jpg&f=1&nofb=1'
+//         },
+//         'following': {
+//             'name': 'Muhammed Barry',
+//             'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//             'location' : 'Aceh, Indonesia',
+//         },
+//         'followers': {
+//             'name': 'Muhammed Barry',
+//             'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//             'location' : 'Aceh, Indonesia',
+//         },
+//         'friends': {
+//             'name': {
+//                 'name': 'Muhammed Barry',
+//                 'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//                 'location' : 'Aceh, Indonesia',
+//                 'chats': {
+//                     'user': {
+//                         'messege': 'Hi',
+//                         'date': '12/22/2022',
+//                         'time': '12:32 AM'
+//                     },
+//                     'client': {
+//                         'messege': 'Hello!',
+//                         'date': '12/22/2022',
+//                         'time': '12:32 AM'
+//                     }
+//                 }
+//             }
+//         },
+//         'posts': {
+//             'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//             'title' : 'What a nice breeze of the forest ☺',
+//             'content' : ' I realy like the view from here, here is the link to full photo album. https://bith3skdf.plantcode',
+//             'image' : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2016%2F01%2F288299-forest-landscape.jpg&f=1&nofb=1',
+//             'comments': {
+//                 'name': 'Muhammed Barry',
+//                 'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//                 'comment' : ' I realy like the view from here, here is the link to full photo album. https://bith3skdf.plantcode',
+//                 'replies': {
+//                     'name': 'Muhammed Barry',
+//                     'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//                     'reply' : ' I realy like the view from here, here is the link to full photo album. https://bith3skdf.plantcode',
+//                     'likes': {
+//                         'name': 'Muhammed Barry',
+//                     }
+//                 },
+//                 'likes': {
+//                     'name': 'Muhammed Barry'
+//                 }
+//             }
+//         },
+//         'liked': {
+            
+//         },
+//         'collection': {
+//             'name': 'User name',
+//             'profileImage' : 'https://this-person-does-not-exist.com/img/avatar-691b0302f202b5c95f3c8a37606fc336.jpg',
+//             'image' : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2016%2F01%2F288299-forest-landscape.jpg&f=1&nofb=1',
+//         }
+//     })
+// }
 //scroll sneak
 
 // Listen on hash change:
