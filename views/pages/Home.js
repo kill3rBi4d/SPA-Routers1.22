@@ -56,10 +56,31 @@ let likes = 90099,
     islike = false,
     iscollected = false 
 
+
 let Home = {
     render : async () => {    
         let view =  /*html*/`
-            <section class="home">
+            <section class="home-skeleton" id="home-skeleton">
+                <div class="skelimate"></div>
+                <div class="skel-1">
+                    <div class="s-1"></div>
+                    <div class="s-2"></div>
+                </div>
+                <div class="skel-2">
+                    <div class="c">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="p-0"></div>
+            </section>
+            <!-- page contents --->
+            <section class="home" id="home-page">
                 <!--- Share post -->
                 <section class="share-post-wrapper">
                     <div class="s-wrapper">
@@ -226,171 +247,189 @@ let Home = {
         return view
     }
     , after_render: async () => {
+        let _skeleton = document.getElementById('home-skeleton')
         // Get the parsed URl from the addressbar
         let request = Utils.parseRequestURL()
         // Parse the URL and if it has an id part, change it with the string ":id"
         let parsedURL = (request.resource ? '/' + request.resource : '/') + (request.id ? '/:id' : '') + (request.verb ? '/' + request.verb : '')
-        
-        const imgFrame = document.getElementById('img-frame'),
-            heartPop = document.getElementById('heart-pop'),
-            likeIcon = document.getElementById('like-icon'),
-            likeCounts = document.getElementById('like-count'),
-            likeLabel = document.getElementById('like-label'),
-            likeBox = document.getElementById('like-btn'),
-            collectBox = document.getElementById('collect-btn'),
-            collectIoc = document.getElementById('collect-ico'),
-            collectedView = document.getElementById('collected'),
-            saved = document.getElementById('saved'),
-            description = document.getElementById('description'),
-            moreDes = document.getElementById('more'),
-            _menu = document.getElementById('menu'),
-            _postMenu = document.getElementById('post-menu'),
-            _toggleDown = document.getElementById('toggle-down'),
-            _toggleDown1 = document.getElementById('toggle-down-1'),
-            _menuContainer = document.getElementById('menu-container')
-        let count = 0
-        
-        // let postEl = document.getElementById('post-image')
-        // new PinchZoom.default(imgFrame, {})
-        // pv.enable()
-        // imgFrame.addEventListener("dblclick", () => {
-        //     islike = true
-        //     count = islike ? 1 : count
-        //     likeIcon.src = islike ? '/src/props/icons/like-fill.svg' : '/src/props/icons/like-fill.svg'
 
-        //     console.log(islike ? 'liked '+count : 'disliked '+count)
-        //     likeResponse(heartPop, likeIcon, likeCounts, likeLabel)
+        // let fetchRef = firebase.database().ref('Posts')
+        // fetchRef.on('child_added', function(sn){
+        //     let id = Math.random(1) + 999;
+        //     let val = sn.val()
+
+        //     if(_skeleton != null){
+        //         _skeleton.style.display = 'none' 
+        //     }
+        //     const imgFrame = document.getElementById(`img-frame-${id}`),
+        //     heartPop = document.getElementById(`heart-pop-${id}`),
+        //     likeIcon = document.getElementById(`like-icon-${id}`),
+        //     likeCounts = document.getElementById(`like-count-${id}`),
+        //     likeLabel = document.getElementById(`like-label-${id}`),
+        //     likeBox = document.getElementById(`like-btn-${id}`),
+        //     collectBox = document.getElementById(`collect-btn-${id}`),
+        //     collectIoc = document.getElementById(`collect-ico-${id}`),
+        //     collectedView = document.getElementById(`collected-${id}`),
+        //     saved = document.getElementById(`saved-${id}`),
+        //     description = document.getElementById(`description-${id}`),
+        //     moreDes = document.getElementById(`more-${id}`),
+        //     _menu = document.getElementById(`menu-${id}`),
+        //     _postMenu = document.getElementById(`post-menu-${id}`),
+        //     _toggleDown = document.getElementById(`toggle-down-${id}`),
+        //     _toggleDown1 = document.getElementById(`toggle-down-1-${id}`),
+        //     _menuContainer = document.getElementById(`menu-container-${id}`)
+        //     let count = 0
+            
+        //     // let postEl = document.getElementById('post-image')
+        //     // new PinchZoom.default(imgFrame, {})
+        //     // pv.enable()
+        //     imgFrame.addEventListener("dblclick", (event) => {
+        //         event.preventDefault()
+        //         islike = true
+        //         count = islike ? 1 : count
+        //         likeIcon.src = islike ? '/src/props/icons/like-fill.svg' : '/src/props/icons/like-fill.svg'
+
+        //         console.log(islike ? 'liked '+count : 'disliked '+count)
+        //         likeResponse(heartPop, likeIcon, likeCounts, likeLabel)
+        //     })
+        //     likeBox.addEventListener('click', () => {
+        //         islike = islike === false ? true : false
+        //         count = islike ? 1 : 0
+
+        //         likeIcon.src = islike ? '/src/props/icons/like-fill.svg' : '/src/props/icons/like.svg'
+        //         likeLabel.innerText = islike ? 'Liked' : 'Like'
+        //         likeLabel.style.color = islike ? '#1971FB' : '#626262'
+        //         likeIconResponse(likeIcon, likeCounts)
+        //         console.log(islike ? 'liked '+count : 'disliked '+count)
+        //     })
+        //     collectBox.addEventListener('click', () => {
+        //         iscollected = !iscollected ? true : false
+        //         collectIoc.src = iscollected ? '/src/props/icons/collect-fill.svg' : '/src/props/icons/collect.svg'
+        //         saved.innerText = iscollected ? 'Saved to collections' : 'Removed from collections'
+        //         collectResponse(collectedView)
+        //         console.log(iscollected)
+        //     })
+
+        //     function likeResponse(el1, el2, counts, label){
+        //         el1.classList.add("liked")
+        //         el2.classList.add("on-like")
+        //         label.innerText = islike ? 'Liked' : 'Like'
+        //         label.style.color = islike ? '#1971FB' : '#626262'
+        //         setTimeout(() => {
+        //             el1.classList.remove("liked")
+        //             el2.classList.remove("on-like")
+        //         }, 1200)
+        //     }
+        //     function likeIconResponse(el1, counts){
+        //         el1.classList.add("on-like")
+        //         setTimeout(() => {
+        //             el1.classList.remove("on-like")
+        //         }, 500)
+        //     }
+        //     function collectResponse(el){
+        //         el.classList.add("collected")
+        //         setTimeout(() => {
+        //             el.classList.remove("collected")
+        //         }, 1500)
+        //     }
+
+        //     description.innerHTML = comment.length > 102 ? limit(replaceURLs(comment), 100) + '..' : replaceURLs(comment)
+        //     moreDes.style.display = description.innerText.length <= 102 ? 'auto' : 'none'
+        //     console.log(description.innerText.length)
+        //     viewMore(moreDes, description)
+
+        //     function viewMore(a, b){
+        //         a.addEventListener('click', () => {
+        //             a.innerText = a.innerText === 'Expand' ? 'Collapse' : 'Expand'
+        //             b.innerHTML = b.innerHTML.length <= 102 ? replaceURLs(comment) : limit(replaceURLs(comment), 100) + '..'
+        //             console.log('more comments clicked')
+        //         })
+        //     }
+
+        //     let pathname = parsedURL,
+        //         isclosemenu = false
+        //     //menu --> options
+        //     _menu.style.display = pathname === '/menu' ? 'flex' : 'none'
+            
+        //     //menu --> create post
+        //     _postMenu.style.display = pathname === '/createpost' ? 'flex' : 'none'
+        //     //close menu
+        //     // window.onclick = (e) => {
+        //     //     isclosemenu = e.target.matches('.post-menu') 
+        //     //         || e.target.matches('.menu') ? true : false
+        //     //     console.log(isclosemenu)
+        //     //     if(isclosemenu)
+        //     //         history.back()
+        //     //     console.log(e.target)
+        //     // }
+
+        //     let postEl = document.getElementById('post-image')
+        //     //pinch zoom
+        //     const pinchZoom = (imageElement) => {
+        //         let imageElementScale = 1;
+                
+        //         let start = {};
+            
+        //     // Calculate distance between two fingers
+        //         const distance = (event) => {
+        //             return Math.hypot(event.touches[0].pageX - event.touches[1].pageX, event.touches[0].pageY - event.touches[1].pageY);
+        //         };
+            
+        //         imageElement.addEventListener('touchstart', (event) => {
+        //             // console.log('touchstart', event);
+        //             if (event.touches.length === 2) {
+        //             event.preventDefault(); // Prevent page scroll
+                
+        //             // Calculate where the fingers have started on the X and Y axis
+        //             start.x = (event.touches[0].pageX + event.touches[1].pageX) / 2;
+        //             start.y = (event.touches[0].pageY + event.touches[1].pageY) / 2;
+        //             start.distance = distance(event);
+        //             }
+        //         });
+            
+        //         imageElement.addEventListener('touchmove', (event) => {
+        //             // console.log('touchmove', event);
+        //             event.preventDefault()
+        //             if (event.touches.length === 2) {
+        //             event.preventDefault(); // Prevent page scroll
+                
+        //             // Safari provides event.scale as two fingers move on the screen
+        //             // For other browsers just calculate the scale manually
+        //             let scale;
+        //             if (event.scale) {
+        //                 scale = event.scale;
+        //             } else {
+        //                 const deltaDistance = distance(event);
+        //                 scale = deltaDistance / start.distance;
+        //             }
+        //             imageElementScale = Math.min(Math.max(1, scale), 4);
+                
+        //             // Calculate how much the fingers have moved on the X and Y axis
+        //             const deltaX = (((event.touches[0].pageX + event.touches[1].pageX) / 2) - start.x) * 2; // x2 for accelarated movement
+        //             const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y) * 2; // x2 for accelarated movement
+                
+        //             // Transform the image to make it grow and move with fingers
+        //             const transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
+        //             imageElement.style.transform = transform;
+        //             imageElement.style.WebkitTransform = transform;
+        //             // imageElement.style.position = 'absolute'
+        //             imageElement.style.zIndex = "9999";
+        //             }
+        //         });
+            
+        //         imageElement.addEventListener('touchend', (event) => {
+        //             // console.log('touchend', event);
+        //             // Reset image to it's original format
+        //             imageElement.style.transform = "";
+        //             imageElement.style.WebkitTransform = "";
+        //             imageElement.style.position = 'inherit'
+        //             imageElement.style.zIndex = "";
+        //         });
+        //     }
+        //     pinchZoom(postEl)
         // })
-        likeBox.addEventListener('click', () => {
-            islike = islike === false ? true : false
-            count = islike ? 1 : 0
-
-            likeIcon.src = islike ? '/src/props/icons/like-fill.svg' : '/src/props/icons/like.svg'
-            likeLabel.innerText = islike ? 'Liked' : 'Like'
-            likeLabel.style.color = islike ? '#1971FB' : '#626262'
-            likeIconResponse(likeIcon, likeCounts)
-            console.log(islike ? 'liked '+count : 'disliked '+count)
-        })
-        collectBox.addEventListener('click', () => {
-            iscollected = !iscollected ? true : false
-            collectIoc.src = iscollected ? '/src/props/icons/collect-fill.svg' : '/src/props/icons/collect.svg'
-            saved.innerText = iscollected ? 'Saved to collections' : 'Removed from collections'
-            collectResponse(collectedView)
-            console.log(iscollected)
-        })
-
-        function likeResponse(el1, el2, counts, label){
-            el1.classList.add("liked")
-            el2.classList.add("on-like")
-            label.innerText = islike ? 'Liked' : 'Like'
-            label.style.color = islike ? '#1971FB' : '#626262'
-            setTimeout(() => {
-                el1.classList.remove("liked")
-                el2.classList.remove("on-like")
-            }, 1200)
-        }
-        function likeIconResponse(el1, counts){
-            el1.classList.add("on-like")
-            setTimeout(() => {
-                el1.classList.remove("on-like")
-            }, 500)
-        }
-        function collectResponse(el){
-            el.classList.add("collected")
-            setTimeout(() => {
-                el.classList.remove("collected")
-            }, 1500)
-        }
-
-        description.innerHTML = comment.length > 102 ? limit(replaceURLs(comment), 100) + '..' : replaceURLs(comment)
-        moreDes.style.display = description.innerText.length <= 102 ? 'auto' : 'none'
-        console.log(description.innerText.length)
-        viewMore(moreDes, description)
-
-        function viewMore(a, b){
-            a.addEventListener('click', () => {
-                a.innerText = a.innerText === 'Expand' ? 'Collapse' : 'Expand'
-                b.innerHTML = b.innerHTML.length <= 102 ? replaceURLs(comment) : limit(replaceURLs(comment), 100) + '..'
-                console.log('more comments clicked')
-            })
-        }
-
-        let pathname = parsedURL,
-            isclosemenu = false
-        //menu --> options
-        _menu.style.display = pathname === '/menu' ? 'flex' : 'none'
         
-        //menu --> create post
-        _postMenu.style.display = pathname === '/createpost' ? 'flex' : 'none'
-        //close menu
-        window.onclick = (e) => {
-            isclosemenu = e.target.matches('.post-menu') 
-                || e.target.matches('.menu') ? true : false
-            console.log(isclosemenu)
-            if(isclosemenu)
-                history.back()
-            console.log(e.target)
-        }
-
-        //pinch zoom
-        const pinchZoom = (imageElement) => {
-        let imageElementScale = 1;
         
-        let start = {};
-        
-        // Calculate distance between two fingers
-        const distance = (event) => {
-            return Math.hypot(event.touches[0].pageX - event.touches[1].pageX, event.touches[0].pageY - event.touches[1].pageY);
-        };
-        
-        imageElement.addEventListener('touchstart', (event) => {
-            // console.log('touchstart', event);
-            if (event.touches.length === 2) {
-            event.preventDefault(); // Prevent page scroll
-        
-            // Calculate where the fingers have started on the X and Y axis
-            start.x = (event.touches[0].pageX + event.touches[1].pageX) / 2;
-            start.y = (event.touches[0].pageY + event.touches[1].pageY) / 2;
-            start.distance = distance(event);
-            }
-        });
-        
-        imageElement.addEventListener('touchmove', (event) => {
-            // console.log('touchmove', event);
-            if (event.touches.length === 2) {
-            event.preventDefault(); // Prevent page scroll
-        
-            // Safari provides event.scale as two fingers move on the screen
-            // For other browsers just calculate the scale manually
-            let scale;
-            if (event.scale) {
-                scale = event.scale;
-            } else {
-                const deltaDistance = distance(event);
-                scale = deltaDistance / start.distance;
-            }
-            imageElementScale = Math.min(Math.max(1, scale), 4);
-        
-            // Calculate how much the fingers have moved on the X and Y axis
-            const deltaX = (((event.touches[0].pageX + event.touches[1].pageX) / 2) - start.x) * 2; // x2 for accelarated movement
-            const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y) * 2; // x2 for accelarated movement
-        
-            // Transform the image to make it grow and move with fingers
-            const transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
-            imageElement.style.transform = transform;
-            imageElement.style.WebkitTransform = transform;
-            imageElement.style.zIndex = "9999";
-            }
-        });
-        
-        imageElement.addEventListener('touchend', (event) => {
-            // console.log('touchend', event);
-            // Reset image to it's original format
-            imageElement.style.transform = "";
-            imageElement.style.WebkitTransform = "";
-            imageElement.style.zIndex = "";
-        });
-        }
     }
 }
 export default Home;
